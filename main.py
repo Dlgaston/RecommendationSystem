@@ -1,7 +1,6 @@
 
-def main():
-    print("Hello world")
 
+#Git testing
 
 if __name__ == '__main__':
-    main()
+    print("hello")
