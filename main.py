@@ -1,6 +1,11 @@
+def main():
+    print("Hello world")
+    random_function()
 
 
-#Git testing
+def random_function():
+    print("Guh")
+
 
 if __name__ == '__main__':
-    print("hello")
+    main()
