@@ -3,6 +3,10 @@ def add(b:int, a:int):
 
 def main():
     print("Hello world")
+    rand_func()
+
+def rand_func():
+    print("erm")
 
 
 if __name__ == '__main__':
