@@ -8,6 +8,9 @@ def main():
 def rand_func():
     print("attempt3")
 
+def func():
+    print("hello")
+
 
 if __name__ == '__main__':
     main()
