@@ -1,10 +1,12 @@
+def add(b:int, a:int):
+    return a+b
+
 def main():
     print("Hello world")
-    random_function()
+    rand_func()
 
-
-def random_function():
-    print("Guh")
+def rand_func():
+    print("attempt3")
 
 
 if __name__ == '__main__':
