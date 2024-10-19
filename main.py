@@ -1,3 +1,5 @@
+def add(b:int, a:int):
+    return a+b
 
 def main():
     print("Hello world")
