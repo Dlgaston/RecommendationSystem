@@ -1,4 +1,3 @@
-from typing import List
 
 from Entity.User import User
 
@@ -10,9 +9,10 @@ class Movie:
         self.author = ""
         self.genre = []
         self.country = []
-        self.hasWatched = [User]
+        self.hasWatched = []
         self.rating= 0
-        self.movieWeight=0
+        self.totalMovieWeight=0
+        self.userWeight =0
 
     def getTitle(self):
         return self.title
@@ -34,17 +34,21 @@ class Movie:
         return self.hasWatched
     def setHasWatched(self, hasWatched):
         self.hasWatched = hasWatched
-    def getMovieWeight(self):
-        return self.movieWeight
-    def setMovieWeight(self, movieWeight):
-        self.movieWeight = movieWeight
+    def getTotalMovieWeight(self):
+        return self.totalMovieWeight
+    def setTotalMovieWeight(self, totalMovieWeight):
+        self.totalMovieWeight = totalMovieWeight
     def getRating(self):
         return self.rating
     def setRating(self, rating):
         self.rating = rating
+    def getUserWeight(self):
+        return self.userWeight
+    def setUserWeight(self, userWeight):
+        self.userWeight = userWeight
 
     def __str__(self):
-        return "Title: " + self.title + " Author: "+ self.author  + " Rating: " + self.rating.__str__() +" Movie Weight: "+ self.movieWeight.__str__() +  " Genre: " + self.genre.__str__() + " Country: " + self.country.__str__()
+        return "Title: " + self.title + " Author: "+ self.author  + " Rating: " + self.rating.__str__() +" Movie Weight: "+ self.totalMovieWeight.__str__() + " User Weight: "+ self.userWeight.__str__() +  " Genre: " + self.genre.__str__() + " Country: " + self.country.__str__()
 
 
 
