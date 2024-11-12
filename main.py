@@ -3,15 +3,13 @@ import random, csv
 from Entity.Movie import Movie
 from Entity.User import User
 
-MOVIE_GENRE_LISTING =['Documentaries', 'International TV Shows', 'TV Dramas',
-                      'TV Mysteries', 'Crime TV Shows', 'TV Action & Adventure', 'Docuseries',
-                      'Reality TV', 'Romantic TV Shows', 'TV Comedies', 'TV Horror', 'Children & Family Movies',
-                      'Dramas', 'Independent Movies', 'International Movies', 'British TV Shows', 'Comedies',
-                      'Spanish-Language TV Shows', 'Thrillers', 'Romantic Movies', 'Music & Musicals', 'Horror Movies',
-                      'Sci-Fi & Fantasy', 'TV Thrillers', "Kids' TV", 'Action & Adventure', 'TV Sci-Fi & Fantasy',
-                      'Classic Movies', 'Anime Features', 'Sports Movies', 'Anime Series', 'Korean TV Shows',
-                      'Science & Nature TV', 'Teen TV Shows', 'Cult Movies', 'TV Shows', 'Faith & Spirituality',
-                      'LGBTQ Movies', 'Stand-Up Comedy', 'Movies', 'Stand-Up Comedy & Talk Shows', 'Classic & Cult TV']
+MOVIE_GENRE_LISTING =['Documentaries','Docuseries','Children & Family Movies',
+                      'Dramas', 'Independent Movies', 'International Movies','Comedies',
+                      'Thrillers', 'Romantic Movies', 'Music & Musicals', 'Horror Movies',
+                      'Sci-Fi & Fantasy','Action & Adventure',
+                      'Classic Movies', 'Anime Features', 'Sports Movies', 'Anime Series',
+                       'Cult Movies','Faith & Spirituality',
+                      'LGBTQ Movies', 'Stand-Up Comedy', 'Movies']
 
 MOVIE_DB={}
 
@@ -116,6 +114,18 @@ def createUserRecommendation(p:User):
             p.getrecommendedMovies()[genre] = sorted(p.getrecommendedMovies()[genre],
                                                 key=lambda m: m.userWeight, reverse=True)
 
+# def updateUserRecommendation(p:User):
+#     print("Would you like to update something?")
+#     choice = input("R: Remove from recommendation list\nG: Change genre listings")
+#
+#     while choice is not 'N':
+#         choice = input("Enter new option:\nR: Remove from recommendation list\nG: Change genre listings")
+#         match choice:
+#             case 'R':
+#                 print("Here is your recommendation list, please enter a movie to remove")
+#                 for i in range(len(p.getrecommendedMovies().items())-1):
+#                     print(i)
+#
 
 def main():
     loadMovieDB()
@@ -123,8 +133,9 @@ def main():
     setMovieTotalWeights(userDatabase)
 
     createUserRecommendation(userDatabase[0])
-    print(userDatabase[0].printRecommendedMovies())
-
+    print(userDatabase[0].getfavoriteGenres())
+    print(userDatabase[0].printTop10RecommendedMovies())
+    print(userDatabase[0].printTopTenByGenre())
 
 
 if __name__ == '__main__':

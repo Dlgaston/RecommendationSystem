@@ -1,6 +1,4 @@
 
-
-
 class User:
     def __init__(self):
         self.fName = ""
@@ -9,6 +7,7 @@ class User:
         self.favoriteGenres = {}
         self.movieAndRating = {}
         self.recommendedMovies={}
+        self.removedMovies=[]
 
     def getFname(self):
         return self.fName
@@ -35,8 +34,12 @@ class User:
         return self.recommendedMovies
     def setrecommendedMovies(self, recommendedMovies:list):
         self.recommendedMovies = recommendedMovies
+    def getRemovedMovies(self):
+        return self.removedMovies
+    def setRemovedMovies(self,m:[]):
+        self.removedMovies = m
 
-    def printRecommendedMovies(self):
+    def printTop10RecommendedMovies(self):
         recommendedMovies = [movie for genre_movies in self.getrecommendedMovies().values() for movie in genre_movies]
 
         sorted_movies = sorted(recommendedMovies, key=lambda movie: movie.getUserWeight(), reverse=True)
@@ -46,8 +49,17 @@ class User:
         top_ten_movies = sorted_movies[:10]
         listPrintOut=""
         for movie in top_ten_movies:
-            listPrintOut += f"Title: {movie.getTitle()}\n\tRating: {movie.getRating()}, userWeight: {movie.getUserWeight()}\n\tGenre: {movie.getGenre()}"
+            listPrintOut += f"Title: {movie.getTitle()}\n\tRating: {movie.getRating()}, userWeight: {movie.getUserWeight()}\n\tGenre: {movie.getGenre()}\n"
 
+        return listPrintOut
+
+    def printTopTenByGenre(self):
+        listPrintOut=""
+        for genre,movies in self.getrecommendedMovies().items():
+            listPrintOut += f"YOUR RECOMMENDED MOVIES IN: {genre}\n"
+            for i in range(10):
+                listPrintOut += f"{i+1}: {movies[i].getTitle()} ({movies[i].getRating()})\t"
+            listPrintOut+= "\n"
         return listPrintOut
     def __str__(self):
         moviePrintOut=""

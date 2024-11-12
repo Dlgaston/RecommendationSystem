@@ -1,7 +1,4 @@
 
-from Entity.User import User
-
-
 class Movie:
 
     def __init__(self):
