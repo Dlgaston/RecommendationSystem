@@ -1,4 +1,6 @@
 
+
+
 class User:
     def __init__(self):
         self.fName = ""
@@ -32,7 +34,7 @@ class User:
         self.movieAndRating = movieAndRating
     def getrecommendedMovies(self):
         return self.recommendedMovies
-    def setrecommendedMovies(self, recommendedMovies:list):
+    def setrecommendedMovies(self, recommendedMovies:dict):
         self.recommendedMovies = recommendedMovies
     def getRemovedMovies(self):
         return self.removedMovies
@@ -49,7 +51,7 @@ class User:
         top_ten_movies = sorted_movies[:10]
         listPrintOut=""
         for movie in top_ten_movies:
-            listPrintOut += f"Title: {movie.getTitle()}\n\tRating: {movie.getRating()}, userWeight: {movie.getUserWeight()}\n\tGenre: {movie.getGenre()}\n"
+            listPrintOut += f"Title: {movie.getTitle()}\n\tWeight: {round(movie.getUserWeight(),2)}\n\tGenre: {movie.getGenre()}\n"
 
         return listPrintOut
 
@@ -58,8 +60,14 @@ class User:
         for genre,movies in self.getrecommendedMovies().items():
             listPrintOut += f"YOUR RECOMMENDED MOVIES IN: {genre}\n"
             for i in range(10):
-                listPrintOut += f"{i+1}: {movies[i].getTitle()} ({movies[i].getRating()})\t"
-            listPrintOut+= "\n"
+                listPrintOut += f"\t{i+1}: {movies[i].getTitle()} ({round(movies[i].getUserWeight(),2)})\n"
+        return listPrintOut
+    def printGenreRec(self, genre):
+        listPrintOut=""
+        genreList=self.getrecommendedMovies()[genre]
+        for i in range(10):
+            listPrintOut += f"{i+1}: {genreList[i].getTitle()} ({round(genreList[i].getUserWeight(),2)})\n"
+
         return listPrintOut
     def __str__(self):
         moviePrintOut=""
