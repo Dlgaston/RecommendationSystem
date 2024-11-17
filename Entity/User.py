@@ -69,6 +69,21 @@ class User:
             listPrintOut += f"{i+1}: {genreList[i].getTitle()} ({round(genreList[i].getUserWeight(),2)})\n"
 
         return listPrintOut
+
+    def printNewGenre(self,longerList: int, oldDict: dict):
+        newDict = self.getrecommendedMovies()
+        oldRectDictKeys = list(oldDict.keys())
+        newRectDictKeys = list(newDict.keys())
+        for i in range(longerList):
+            oldGenre = oldRectDictKeys[i]
+            newGenre = newRectDictKeys[i]
+            print(f"Old Genre: {oldGenre} ----> New Genre: {newGenre}")
+            for i in range(10):
+                print(
+                    f"\t{i + 1}: Old Movie: {oldDict[oldGenre][i].getTitle()}: {round(oldDict[oldGenre][i].getUserWeight(), 3)}"
+                    f" ----> New Movie: {newDict[newGenre][i].getTitle()}: {round(newDict[newGenre][i].getUserWeight(), 3)}")
+            print()
+
     def __str__(self):
         moviePrintOut=""
         for key, value in self.movieAndRating.items():

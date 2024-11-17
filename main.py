@@ -121,18 +121,7 @@ def createUserRecommendation(p:User):
         p.getrecommendedMovies()[genre] = sorted(p.getrecommendedMovies()[genre],
                                                  key=lambda m: m.userWeight, reverse=True)
 
-def printNewGenre(longerList:int, oldDict:dict, newDict:dict):
-    oldRectDictKeys = list(oldDict.keys())
-    newRectDictKeys = list(newDict.keys())
-    for i in range(longerList):
-        oldGenre = oldRectDictKeys[i]
-        newGenre = newRectDictKeys[i]
-        print(f"Old Genre: {oldGenre} ----> New Genre: {newGenre}")
-        for i in range(10):
-            print(
-                f"\t{i + 1}: Old Movie: {oldDict[oldGenre][i].getTitle()}: {round(oldDict[oldGenre][i].getUserWeight(), 3)}"
-                f" ----> New Movie: {newDict[newGenre][i].getTitle()}: {round(newDict[newGenre][i].getUserWeight(), 3)}")
-        print()
+
 
 def updateUserRecommendation(p:User):
     print("Would you like to update something?")
@@ -202,10 +191,10 @@ def updateUserRecommendation(p:User):
                 newRecDict = p.getrecommendedMovies()
 
                 if len(list(oldRectDict.keys()))>len(list(newRecDict.keys())):
-                    printNewGenre(len(list(newRecDict.keys())),oldRectDict, newRecDict)
+                    p.printNewGenre(len(list(newRecDict.keys())),oldRectDict)
 
                 else:
-                    printNewGenre(len(list(oldRectDict.keys())), oldRectDict, newRecDict)
+                    p.printNewGenre(len(list(oldRectDict.keys())), oldRectDict)
             case 'N':
                 print("Goodbye")
 
